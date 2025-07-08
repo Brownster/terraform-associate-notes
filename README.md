@@ -159,35 +159,3 @@
     *   *Correct `for_each` equivalent:* Use a `for` expression (`[for instance in aws_instance.web : instance.id]`) or the `values()` function (`values(aws_instance.web)[*].id`).
 *   **Repeated Nested Blocks:** Use a splat expression to get a list of attributes from all nested blocks of the same type.
     *   `aws_instance.example.ebs_block_device[*].volume_id` → returns a list of all attached volume IDs.
-
-Step 2: Create Your File
-
-Now that you have the Markdown text copied, you have a few easy options:
-
-Option A: Use an Online Converter (Easiest)
-
-Go to a free online Markdown to PDF converter, like this one.
-
-Paste the text you copied into the editor on the left.
-
-The right side will show a perfectly formatted preview.
-
-Download the result as a PDF.
-
-Option B: Use a Text Editor (like VS Code)
-
-If you have a code editor like VS Code, create a new file named cheat-sheet.md.
-
-Paste the copied text into this file.
-
-Most modern editors will show you a preview button to see the formatted output.
-
-You can install an extension (like "Markdown PDF") to export it directly to a PDF.
-
-Option C: Paste into Notion or Similar Apps
-
-Apps like Notion, Obsidian, or Slite understand Markdown.
-
-Just paste the text directly into a new page, and it should render the formatting, tables, and code blocks correctly.
-
-I hope this helps you get a perfectly formatted, portable copy of your notes
