@@ -159,3 +159,79 @@
     *   *Correct `for_each` equivalent:* Use a `for` expression (`[for instance in aws_instance.web : instance.id]`) or the `values()` function (`values(aws_instance.web)[*].id`).
 *   **Repeated Nested Blocks:** Use a splat expression to get a list of attributes from all nested blocks of the same type.
     *   `aws_instance.example.ebs_block_device[*].volume_id` → returns a list of all attached volume IDs.
+
+
+🔧 Initialization & Backend Migration
+
+    terraform init
+
+        Bootstraps the working directory
+
+        Automatically migrates your state when you change backend config (e.g. local → S3)
+        HashiCorp Developer+8cheat-sheets.nth-root.nl+8GitHub+8
+        HashiCorp Developer
+
+🧠 Planning & Applying Changes
+
+    terraform plan
+
+        Previews changes without applying
+
+    terraform apply
+
+        Applies the changes to your infrastructure
+
+    terraform plan -destroy
+
+        Shows what would be destroyed (preview before deletion)
+
+    terraform destroy
+
+        Shows and then deletes resources after confirmation
+        Spacelift
+        GitHub+3cheat-sheets.nth-root.nl+3Spacelift+3
+
+🔄 State Sync & Replacements
+
+    terraform refresh
+
+        Updates the state file to reflect manual changes or deletions
+        HashiCorp Developer+5cheat-sheets.nth-root.nl+5Spacelift+5
+
+    terraform apply -replace=<resource>
+
+        Marks a resource for replacement in a single step (replaces deprecated taint)
+        GitHub+7cheat-sheets.nth-root.nl+7Spacelift+7
+
+🔁 Importing & Managing External Resources
+
+    terraform import <address> <id>
+
+        Brings an existing resource under Terraform management
+        Medium+7cheat-sheets.nth-root.nl+7Spacelift+7
+
+⚙️ Other Useful Commands
+
+    terraform validate — Validates HCL syntax
+
+    terraform fmt — Formats your code
+
+    terraform output — Displays output values
+
+    terraform state rm <resource> — Removes a resource from state (without destroying it)
+    GitHub+2Pluralsight+2Spacelift+2
+    Reddit+6cheat-sheets.nth-root.nl+6Spacelift+6
+
+✅ Quick Reference Table
+Goal	Command
+Initialize or migrate backend	terraform init
+Preview infrastructure changes	terraform plan
+Apply infrastructure changes	terraform apply
+Preview deletion of all resources	terraform plan -destroy
+Destroy resources after review	terraform destroy
+Refresh state to match reality	terraform refresh
+Force replace specific resource	terraform apply -replace=resource.address
+Import existing resource	terraform import <resource.address> <external-resource-id>
+Remove resource from tracking	terraform state rm <resource.address>
+Format & validate code	terraform fmt, terraform validate
+View configured outputs	terraform output
