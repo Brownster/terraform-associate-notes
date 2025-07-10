@@ -75,6 +75,14 @@
   - Git repositories (`source = "git::https://..."`)
   - Local paths (`source = "./modules/webserver"`)
 - **Pinning a Version:** use the `version` argument inside the `module` block: `version = "1.0.0"`.
+- **Module Block Requirements:** every module block needs a `source`. Pin a
+  specific version for reproducible builds, e.g. `version = "1.0.0"`.
+- **Public vs Private Module Registry:**
+  - Public registry modules specify a version in the module block.
+  - Private registry modules restrict access to your Terraform
+    Cloud/Enterprise users but use the same `version` argument.
+- **Passing Root Variables to a Module:** reference variables from the root
+  module when setting module arguments (e.g., `servers = var.num_servers`).
 - **Exposing Child Module Outputs:**
   1. Declare an `output` block inside the child module's code.
   2. In the root module, declare another `output` that references the child's output.
@@ -103,6 +111,9 @@
 | Show specific resource state | `terraform state show <address>` |
 | Remove resource from state | `terraform state rm <address>` |
 | Enable debug logging | `TF_LOG=DEBUG terraform plan` (set `TF_LOG_PATH` for file output) |
+
+`TF_LOG` writes to **stderr**. Use `TF_LOG_PATH` to keep logs, or redirect the
+output to syslog with `terraform apply 2>&1 | logger`.
 
 ## 10. Miscellaneous Facts
 - **Resource Address:** `resource "TYPE" "NAME" {}` is referenced as `TYPE.NAME` (e.g., `aws_instance.web`).
